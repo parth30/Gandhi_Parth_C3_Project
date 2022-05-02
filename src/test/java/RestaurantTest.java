@@ -79,7 +79,7 @@ class RestaurantTest {
     @Test
     public void if_no_item_is_selected_then_amount_should_be_zero() {
         List<String> e = new ArrayList<>();
-        assertEquals(0.0,restaurant.totalPrice(e));
+        assertEquals(0,restaurant.totalPrice(e));
     }
 
     @Test
@@ -91,7 +91,7 @@ class RestaurantTest {
         for (Item i: items) {
             e.add(i.getName());
         }
-        assertEquals(388.0,restaurant.totalPrice(e));
+        assertEquals(388,restaurant.totalPrice(e));
     }
 
 
