@@ -8,6 +8,8 @@ import org.mockito.Spy;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
@@ -72,6 +74,28 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    //<<<<<<<<<<<<<<<<<<<<<<<TotalAmount>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    @Test
+    public void if_no_item_is_selected_then_amount_should_be_zero() {
+        List<String> e = new ArrayList<>();
+        assertEquals(0.0,restaurant.totalPrice(e));
+    }
+
+    @Test
+    public void if_two_item_are_selected_then_amount_should_be_correct_total() {
+        restaurant.addToMenu("Sweet corn soup",119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        List<String> e = new ArrayList<>();
+        List<Item> items = restaurant.getMenu();
+        for (Item i: items) {
+            e.add(i.getName());
+        }
+        assertEquals(388.0,restaurant.totalPrice(e));
+    }
+
+
+
+    //<<<<<<<<<<<<<<<<<<<<<<<TotalAmount>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 }
