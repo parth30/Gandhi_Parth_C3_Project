@@ -67,4 +67,16 @@ public class Restaurant {
         return name;
     }
 
+    public int totalPrice(List<String> e) {
+
+        int totalprice =0;
+        for (Item m : this.menu) {
+            for (String s:e) {
+                if(m.getName().equals(s)){
+                    totalprice+=m.getPrice();
+                }
+            }
+        }
+        return  totalprice;
+    }
 }
